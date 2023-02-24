@@ -16,7 +16,6 @@ export const Button = styled.button`
   opacity: 0;
   cursor: pointer;
   border-radius: 2px;
-  background-color: red;
   color: #fff;
 
   &:hover {
@@ -49,7 +48,7 @@ export const TwoMark = styled.div`
   margin-bottom: 44px;
 `;
 
-export const Marks = styled.div`
+export const MarksContainer = styled.div`
   position: absolute;
   left: 8px;
   top: -40px;

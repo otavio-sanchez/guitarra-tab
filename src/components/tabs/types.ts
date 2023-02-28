@@ -6,4 +6,5 @@ export type TActive = {
 export type TTabsProps = {
   notes: TActive[];
   tuning: string[];
+  strings: number
 };

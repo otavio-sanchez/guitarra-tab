@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const TabContainer = styled.div`
-  text-align: justify;
-  font-size: 16px;
+  white-space: pre;
+  font-family: monospace;
+  position: relative;
 `;

@@ -4,34 +4,30 @@ import { Inter } from '@next/font/google';
 import { Container } from '@mui/material';
 import { Guitar } from '@/components/guitar';
 import { Config } from '@/components/config';
-import { TActive } from '@/components/guitar/types';
 import { Tabs } from '@/components/tabs';
+import { useStore, TStore } from '@/store';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
-  const [notes, setNotes] = useState<TActive[]>([]);
-  const [strings, setStrings] = useState<number>(6);
-  const [tuning, setTuning] = useState<string[]>(['E', 'B', 'G', 'D', 'A', 'E']);
-  const [color, setColor] = useState<string>('red');
+  const {
+    tuning,
+    addNote,
+    strings,
+    color,
+    changeNumberStrings,
+    changeColor,
+    clearNotes,
+    notes,
+    clearNote,
+    actives
+  }: TStore = useStore((state: TStore) => state);
 
-  const addNote = ({ x, y }: TActive) => {
-    const newNotes = notes.concat({ x, y });
-    setNotes(newNotes);
-  };
+  const [editTuning, setEditTuning] = useState(false)
 
-  const changeNumberStrings = (value: number) => {
-    if (tuning.length < value) {
-      const newTunning = tuning.concat(Array.from(Array(value - tuning.length), _ => tuning[0]));
-      setTuning(newTunning);
-    }
-
-    setStrings(value);
-  };
-
-  const changeColor = (color: string) => {
-    setColor(color);
-  };
+  const changeTuning = () => {
+    setEditTuning(!editTuning)
+  }
 
   return (
     <>
@@ -43,9 +39,17 @@ export default function Home() {
       </Head>
       <main>
         <Container>
-          <Guitar tuning={tuning} onSelectNote={({ x, y }) => addNote({ x, y })} strings={strings} color={color} />
-          <Config onChangeNumberStrings={changeNumberStrings} onChangeColor={changeColor} />
-          <Tabs tuning={tuning} notes={notes} />
+          <Guitar editTuning={editTuning} tuning={tuning} onSelectNote={({ x, y }) => addNote({ x, y })} strings={strings} color={color} />
+          <Config
+            onChangeNumberStrings={changeNumberStrings}
+            onChangeColor={changeColor}
+            clearNotes={clearNotes}
+            clearNote={clearNote}
+            actives={actives}
+            changeTuning={changeTuning}
+            editTuning={editTuning}
+          />
+          <Tabs tuning={tuning} notes={notes} strings={strings} />
         </Container>
       </main>
     </>

@@ -1,7 +1,7 @@
 import { TTabsProps } from './types';
 import { TabContainer } from './style';
 
-const Tabs = ({ notes, tuning }: TTabsProps) => {
+const Tabs = ({ notes, tuning, strings }: TTabsProps) => {
   const completeString = '---';
 
   const complete = (value: number) => {
@@ -20,12 +20,14 @@ const Tabs = ({ notes, tuning }: TTabsProps) => {
 
   return (
     <TabContainer>
-      {tuning.map((note: string, index: number) => (
-        <div style={{ display: 'flex' }} key={note}>
+      {tuning
+      .filter((note: string, index: number) => index < strings)
+      .map((note: string, index: number) => (
+        <p style={{ display: 'flex' }} key={note}>
           {' '}
-          {`${note} | -`}
+          {`${note.length > 1 ? note : `${note} `} | -`}
           {renderTab(index)}
-        </div>
+        </p>
       ))}
     </TabContainer>
   );

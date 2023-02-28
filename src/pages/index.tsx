@@ -21,7 +21,7 @@ export default function Home() {
     notes,
     clearNote,
     actives
-  }: TStore = useStore((state: TStore) => state);
+  }: TStore = useStore((state: any) => state);
 
   const [editTuning, setEditTuning] = useState(false)
 

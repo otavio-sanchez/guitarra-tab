@@ -10,7 +10,7 @@ import { SelectTuning } from '@/components/select-tuning';
 const Guitar = ({ tuning, onSelectNote, strings, color, editTuning }: TGuitarProps) => {
   const freatboard = 25;
 
-  const { actives, setActiveButton, changeTuning }: TStore = useStore((state: TStore) => state);
+  const { actives, setActiveButton, changeTuning }: TStore = useStore((state: any) => state);
 
   const active = ({ x, y }: TActive) =>
     actives && actives.filter((item: { x: number; y: number }) => item.x === x && item.y === y).length > 0;

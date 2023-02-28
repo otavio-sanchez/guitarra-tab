@@ -15,6 +15,6 @@ export type TStore = {
   changeColor: (color: string) => void;
   clearNotes: () => void;
   clearNote: () => void;
-  setActiveButton: () => void;
-  changeTuning: (value: string, position: string) => void
+  setActiveButton: ({ x, y, color }: TActive) => void;
+  changeTuning: (value: string, position: number) => void
 };

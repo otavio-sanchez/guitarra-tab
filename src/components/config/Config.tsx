@@ -28,6 +28,16 @@ const Config = ({ onChangeNumberStrings, onChangeColor, clearNotes, clearNote, c
   return (
     <ConfigContainer>
     <Grid container spacing={2} alignItems={'center'}>
+    <Grid item>
+        <Button onClick={clearNotes} title="Limpar" variant="contained">
+          <Clear />{ 'Limpar' }
+        </Button>
+      </Grid>
+      <Grid item>
+        <Button disabled={actives.length < 0} onClick={clearNote} title="Voltar" variant="contained">
+          <Undo />{ 'Voltar' }
+        </Button>
+      </Grid>
       <Grid item xs={1}>
         <FormControl fullWidth>
           <InputLabel id="select-strings">Cordas</InputLabel>
@@ -71,16 +81,6 @@ const Config = ({ onChangeNumberStrings, onChangeColor, clearNotes, clearNote, c
       <Grid item>
         <Button onClick={changeTuning} title="Mudar Afinação" variant="contained">
           { editTuning ? <><Save />  Salvar Afinação </>:  <><Edit />  Mudar Afinação </> }
-        </Button>
-      </Grid>
-      <Grid item>
-        <Button onClick={clearNotes} title="Limpar" variant="contained">
-          <Clear />{ '   Limpar' }
-        </Button>
-      </Grid>
-      <Grid item>
-        <Button disabled={actives.length < 0} onClick={clearNote} title="Voltar" variant="contained">
-          <Undo />{ '   Voltar' }
         </Button>
       </Grid>
     </Grid>

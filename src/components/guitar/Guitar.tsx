@@ -10,7 +10,7 @@ import { SelectTuning } from '@/components/select-tuning';
 const Guitar = ({ tuning, onSelectNote, strings, color, editTuning }: TGuitarProps) => {
   const freatboard = 25;
 
-  const { actives, setActiveButton, changeTuning }: TStore = useStore((state: any) => state);
+  const { actives, setActiveButton, changeTuning, addScale }: TStore = useStore((state: any) => state);
 
   const active = ({ x, y }: TActive) =>
     actives && actives.filter((item: { x: number; y: number }) => item.x === x && item.y === y).length > 0;
@@ -43,6 +43,7 @@ const Guitar = ({ tuning, onSelectNote, strings, color, editTuning }: TGuitarPro
                 onClick={() => {
                   setActiveButton({ x, y, color });
                   onSelectNote({ x, y });
+                  addScale(selectNote(tuning[x], y))
                 }}
                 style={{ backgroundColor: selectColor({ x, y }), opacity: active({ x, y }) ? 1 : 0 }}
               >

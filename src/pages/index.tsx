@@ -5,6 +5,7 @@ import { Container } from '@mui/material';
 import { Guitar } from '@/components/guitar';
 import { Config } from '@/components/config';
 import { Tabs } from '@/components/tabs';
+import { Scale } from '@/components/scale';
 import { useStore, TStore } from '@/store';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -32,7 +33,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Guitarra Tab</title>
+        <title>Scale Tab Creator</title>
         <meta name="description" content="Crie suas tabs" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -49,6 +50,7 @@ export default function Home() {
             changeTuning={changeTuning}
             editTuning={editTuning}
           />
+          <Scale />
           <Tabs tuning={tuning} notes={notes} strings={strings} />
         </Container>
       </main>

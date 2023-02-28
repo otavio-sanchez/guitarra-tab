@@ -9,7 +9,7 @@ const Header = () => {
 
   const logo = (
     <Typography variant="h6" component="h1">
-      Guitarra Tab
+      Scale Tab Creator
     </Typography>
   );
 

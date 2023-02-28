@@ -8,6 +8,8 @@ const store = (set: any, get: any) => ({
   tuning: ['E', 'B', 'G', 'D', 'A', 'E'],
   color: 'red',
   actives: [],
+  scale: [],
+  lastNote: null,
   addNote: async ({ x, y }: TActive) => {
     const newNotes = get().notes.concat({ x, y });
 
@@ -31,19 +33,22 @@ const store = (set: any, get: any) => ({
 
     newTuning[position] = value
 
-    console.log(newTuning)
-
     set({ tuning: newTuning });
   },
   clearNotes: async () => {
-    set({ notes: [], actives: [] });
+    set({ notes: [], actives: [], scale: [] });
   },
   clearNote: async () => {
-    set({ notes: get().notes.slice(0, -1), actives: get().actives.slice(0, -1) });
+    set({ notes: get().notes.slice(0, -1), actives: get().actives.slice(0, -1), scale: get().scale.slice(0, -1) });
   },
   setActiveButton: async ({ x, y, color }: TActive) => {
     const newActives = get().actives.concat({ x, y, color });
     set({ actives: newActives });
+  },
+  addScale: async (note: string) => {
+    const scale = get().scale.concat(note);
+
+    set({scale });
   }
 });
 const useStore = create(store);

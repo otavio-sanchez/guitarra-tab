@@ -20,7 +20,7 @@ const store = (set: any, get: any) => ({
 
     if (tuning.length < strings) {
       const newTunning = tuning.concat(Array.from(Array(strings - tuning.length), _ => tuning[0]));
-      set({ notes: newTunning });
+      set({ tuning: newTunning });
     }
 
     set({ strings });

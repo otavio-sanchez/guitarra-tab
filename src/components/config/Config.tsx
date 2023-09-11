@@ -129,7 +129,6 @@ const Config = ({
                 label="Cordas"
                 onChange={handleChange}
               >
-                <MenuItem value={'8'}>8</MenuItem>
                 <MenuItem value={'7'}>7</MenuItem>
                 <MenuItem value={'6'}>6</MenuItem>
                 <MenuItem value={'5'}>5</MenuItem>

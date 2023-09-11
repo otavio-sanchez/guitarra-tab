@@ -17,13 +17,24 @@ const store = (set: any, get: any) => ({
     set({ notes: newNotes });
   },
   changeNumberStrings: async (strings: number) => {
-    const tuning = get().tuning;
-
-    if (tuning.length < strings) {
-      const newTunning = tuning.concat(Array.from(Array(strings - tuning.length), _ => tuning[0]));
-      set({ tuning: newTunning });
+    
+    if(strings === 6) {
+      set({ tuning: ['E', 'B', 'G', 'D', 'A', 'E'] });
     }
 
+    if(strings === 5) {
+      set({ tuning: ['G', 'D', 'A', 'E', 'B'] });
+    }
+
+    if(strings === 4) {
+      set({ tuning: ['G', 'D', 'A', 'E'] });
+    }
+ 
+
+    if(strings === 7) {
+      set({ tuning: ['E', 'B', 'G', 'D', 'A', 'E', 'B']  });
+    }
+ 
     set({ strings });
   },
   changeColor: async (color: string) => {
@@ -46,7 +57,14 @@ const store = (set: any, get: any) => ({
     set({ notes: get().notes.slice(0, -1), actives: get().actives.slice(0, -1), scale: get().scale.slice(0, -1) });
   },
   setActiveButton: async ({ x, y, color }: TActive) => {
-    const newActives = get().actives.concat({ x, y, color });
+    
+    const newActives = get().actives.map((active: any) => {
+      if(active.x === x && active.y === y) {
+        return { x, y, color }
+      }
+
+      return active
+    }).concat({ x, y, color });
     set({ actives: newActives });
   },
   addScale: async (note: string) => {

@@ -66,7 +66,6 @@ export default function Home() {
             changeFrets={changeFrets}
             frets={frets}
           >
-            <div className="guitar" id="guitar">
               <Guitar
                 editTuning={editTuning}
                 frets={frets}
@@ -75,7 +74,6 @@ export default function Home() {
                 strings={strings}
                 color={color}
               />
-            </div>
           </Config>
           <Scale />
           <Tabs tuning={tuning} notes={notes} strings={strings} />

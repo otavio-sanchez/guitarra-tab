@@ -7,8 +7,8 @@ import { Marks } from './Marks';
 import { TStore, useStore } from '@/store';
 import { SelectTuning } from '@/components/select-tuning';
 
-const Guitar = ({ tuning, onSelectNote, strings, color, editTuning }: TGuitarProps) => {
-  const freatboard = 25;
+const Guitar = ({ tuning, onSelectNote, strings, color, editTuning, frets }: TGuitarProps) => {
+  const freatboard = frets + 1;
 
   const { actives, setActiveButton, changeTuning, addScale }: TStore = useStore((state: any) => state);
 
@@ -43,7 +43,7 @@ const Guitar = ({ tuning, onSelectNote, strings, color, editTuning }: TGuitarPro
                 onClick={() => {
                   setActiveButton({ x, y, color });
                   onSelectNote({ x, y });
-                  addScale(selectNote(tuning[x], y))
+                  addScale(selectNote(tuning[x], y));
                 }}
                 style={{ backgroundColor: selectColor({ x, y }), opacity: active({ x, y }) ? 1 : 0 }}
               >
@@ -65,12 +65,15 @@ const Guitar = ({ tuning, onSelectNote, strings, color, editTuning }: TGuitarPro
       <Tuning />
       {tuning
         .filter((note: string, index: number) => index < strings)
-        .map((note: string, index: number) => (
-          editTuning ?  <SelectTuning value={note} key={`tuning-${index}`} position={index}  onChange={changeTuning}  /> :
+        .map((note: string, index: number) =>
+          editTuning ? (
+            <SelectTuning value={note} key={`tuning-${index}`} position={index} onChange={changeTuning} />
+          ) : (
             <Tuning key={`${note}-${index}`}>
               <Typography>{note}</Typography>{' '}
             </Tuning>
-        ))}
+          )
+        )}
     </div>
   );
 

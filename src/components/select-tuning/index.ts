@@ -1,1 +1,1 @@
-export { SelectTuning } from './SelectTuning'
+export { SelectTuning } from './SelectTuning';

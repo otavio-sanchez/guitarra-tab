@@ -7,4 +7,13 @@ export const Color = styled.div`
 
 export const ConfigContainer = styled.div`
   margin: 22px auto 32px auto;
-`
+  diplay: flex;
+`;
+
+export const ConfigBar = styled.div`
+  margin: 16px auto;
+
+  p {
+    margin-bottom: 8px;
+  }
+`;

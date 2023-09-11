@@ -21,14 +21,14 @@ const Tabs = ({ notes, tuning, strings }: TTabsProps) => {
   return (
     <TabContainer>
       {tuning
-      .filter((note: string, index: number) => index < strings)
-      .map((note: string, index: number) => (
-        <p style={{ display: 'flex' }} key={note}>
-          {' '}
-          {`${note.length > 1 ? note : `${note} `} | -`}
-          {renderTab(index)}
-        </p>
-      ))}
+        .filter((note: string, index: number) => index < strings)
+        .map((note: string, index: number) => (
+          <p style={{ display: 'flex' }} key={note}>
+            {' '}
+            {`${note.length > 1 ? note : `${note} `} | -`}
+            {renderTab(index)}
+          </p>
+        ))}
     </TabContainer>
   );
 };

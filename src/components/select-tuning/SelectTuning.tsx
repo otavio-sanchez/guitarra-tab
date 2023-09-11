@@ -1,6 +1,6 @@
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import { TSelectTuningProps } from './type';
-import { notes } from '@/utils/scales'
+import { notes } from '@/utils/scales';
 import { SelectContainer } from './style';
 
 const SelectTuning = ({ onChange, value, key, position }: TSelectTuningProps) => (
@@ -11,11 +11,13 @@ const SelectTuning = ({ onChange, value, key, position }: TSelectTuningProps) =>
       value={value}
       onChange={(event: SelectChangeEvent) => onChange(event.target.value, position)}
     >
-      {
-        notes.map((note: string) => <MenuItem key={note} value={note}>{note}</MenuItem>)
-      }
+      {notes.map((note: string) => (
+        <MenuItem key={note} value={note}>
+          {note}
+        </MenuItem>
+      ))}
     </Select>
   </SelectContainer>
-)
+);
 
-export { SelectTuning }
+export { SelectTuning };

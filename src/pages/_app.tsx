@@ -14,11 +14,11 @@ const theme = createTheme({
   palette: {
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: "#308C58",
+      main: '#308C58',
       // dark: will be calculated from palette.primary.main,
-      contrastText: "#fff",
-    },
-  },
+      contrastText: '#fff'
+    }
+  }
 });
 
 const TodoProvider = dynamic(() => import('@/utils/context').then(ctx => ctx.default), {

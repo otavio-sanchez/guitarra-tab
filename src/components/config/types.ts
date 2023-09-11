@@ -7,5 +7,9 @@ export type TConfigProps = {
   clearNote: () => void;
   actives: TActive[];
   changeTuning: () => void;
-  editTuning: boolean
+  editTuning: boolean;
+  copyScale: () => void;
+  changeFrets: (frets: number) => void;
+  frets: number;
+  children: JSX.Element;
 };

@@ -10,6 +10,7 @@ const store = (set: any, get: any) => ({
   actives: [],
   scale: [],
   lastNote: null,
+  frets: 24,
   addNote: async ({ x, y }: TActive) => {
     const newNotes = get().notes.concat({ x, y });
 
@@ -28,10 +29,13 @@ const store = (set: any, get: any) => ({
   changeColor: async (color: string) => {
     set({ color });
   },
+  changeFrets: async (frets: string) => {
+    set({ frets });
+  },
   changeTuning: async (value: string, position: number) => {
-    const newTuning = get().tuning
+    const newTuning = get().tuning;
 
-    newTuning[position] = value
+    newTuning[position] = value;
 
     set({ tuning: newTuning });
   },
@@ -48,7 +52,7 @@ const store = (set: any, get: any) => ({
   addScale: async (note: string) => {
     const scale = get().scale.concat(note);
 
-    set({scale });
+    set({ scale });
   }
 });
 const useStore = create(store);
